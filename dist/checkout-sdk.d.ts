@@ -169,7 +169,7 @@ declare interface BraintreePaypalButtonInitializeOptions {
     /**
      * A set of styling options for the checkout button.
      */
-    style?: Pick<PaypalButtonStyleOptions, 'color' | 'shape' | 'size'>;
+    style?: Pick<PaypalButtonStyleOptions, 'layout' | 'size' | 'color' | 'label' | 'shape' | 'tagline' | 'fundingicons'>;
     /**
      * A callback that gets called if unable to authorize and tokenize payment.
      *
@@ -2325,6 +2325,7 @@ declare interface LineItem {
     name: string;
     url: string;
     quantity: number;
+    brand: string;
     isTaxable: boolean;
     imageUrl: string;
     discounts: Array<{
@@ -2530,10 +2531,13 @@ declare interface PaymentSettings {
 }
 
 declare interface PaypalButtonStyleOptions {
+    layout?: 'horizontal' | 'vertical';
     size?: 'small' | 'medium' | 'large' | 'responsive';
     color?: 'gold' | 'blue' | 'silver' | 'black';
-    label?: 'credit' | 'checkout';
+    label?: 'checkout' | 'pay' | 'buynow' | 'paypal' | 'credit';
     shape?: 'pill' | 'rect';
+    tagline?: boolean;
+    fundingicons?: boolean;
 }
 
 declare interface PhysicalItem extends LineItem {
